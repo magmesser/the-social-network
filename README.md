@@ -8,7 +8,9 @@ Challenge 18 NoSQL Challenge: Social Network API
 packages: 
 - express.js
 - mongoose
-- js date library 
+- js date library - npm install dayjs
+<!-- const dayjs = require('dayjs')
+dayjs().format() -->
 
 Criteria: 
 WHEN I enter the command to invoke the application
