@@ -1,6 +1,7 @@
 // User Schema
 
 const { Schema, model } = require('mongoose');
+// need to require thought model?
 
 // email matching validation - help from stackoverflow
 var validateEmail = function (email) {
@@ -44,6 +45,13 @@ const userSchema = new Schema(
     },
 );
 
+userSchema.virtual('friendCount').get(function () {
+    return this.comments.length;
+});
+
+const User = model('user', userSchema);
+
+module.exports = User;
 
 // thoughts
 // * Array of _id values referencing the Thought model
