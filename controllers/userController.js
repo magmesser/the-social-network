@@ -2,7 +2,7 @@ const { ObjectId } = require("mongoose").Types;
 const { User, Thought } = require("../models");
 
 module.exports = {
-  // Get all users
+  // Get all Users
   getUsers(req, res) {
     User.find()
       .select("-__v")
@@ -12,7 +12,7 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // Get a single user
+  // Get a single User
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .populate({ path: "friends", select: "-__v" })
@@ -28,13 +28,13 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // Create a new user
+  // Create a new User
   createUser(req, res) {
     User.create(req.body)
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
-  // Delete a user 
+  // Delete a User 
   deleteUser(req, res) {
     User.findOneAndRemove({ _id: req.params.userId })
       .then((user) =>
@@ -77,7 +77,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Remove assignment from a User
+  // Remove a Friend from a User
   removeFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
