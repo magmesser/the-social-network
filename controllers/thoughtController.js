@@ -35,7 +35,6 @@ module.exports = {
           ? res.status(404).json({ message: "No user with that ID" })
           : res.json(user)
       )
-      .then((thought) => res.json(thought))
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
@@ -69,7 +68,6 @@ module.exports = {
   // Add a Reaction to a Thought
   addReaction(req, res) {
     console.log("You are adding a reaction");
-    console.log(req.body);
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $addToSet: { reactions: req.body } },

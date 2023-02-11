@@ -3,6 +3,7 @@ const {
   getUsers,
   getSingleUser,
   createUser,
+  updateUser,
   deleteUser,
   addFriend, 
   removeFriend  
@@ -12,30 +13,15 @@ const {
 router.route('/').get(getUsers).post(createUser);
 
 // /api/users/:userId
-router.route('/:userId').get(getSingleUser).delete(deleteUser);
-
-// /api/users/:userId/friends
-router.route('/:userId/friends').post(addFriend);
+router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
 
 // /api/users/:userId/friends/:friendId
-router.route('/:userId/friends/:friendId').delete(removeFriend);
+router.route('/:userId/friends/:friendId').post(addFriend).delete(removeFriend);
 
 module.exports = router;
-
-
-// GET users by _id and pupulated thought and friend data
 
 // // example data
 // {
 //     "username": "lernantino",
 //     "email": "lernantino@gmail.com"
 //   }
-
-
-// BONUS: Remove a user's associated thoughts when deleted.
-
-
-// /api/users/:userId/friends/:friendId
-
-// POST to add a new friend to a user's friend list
-// DELETE to remove a friend from a user's friend list
