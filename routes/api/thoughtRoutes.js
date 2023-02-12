@@ -1,6 +1,6 @@
-// Thoughts & Reactions
+// Thoughts & Reactions routes
 
-const router = require('express').Router();
+const router = require("express").Router();
 
 const {
   getThoughts,
@@ -10,32 +10,40 @@ const {
   deleteThought,
   addReaction,
   removeReaction,
-} = require('../../controllers/thoughtController.js');
+} = require("../../controllers/thoughtController.js");
 
 // /api/thoughts
-router.route('/').get(getThoughts).post(createThought);
+// Get all Thoughts & Create a new Thought
+router.route("/").get(getThoughts).post(createThought);
 
 // /api/thoughts/:thoughtId
+// Get a single Thought, Update a Thought & Delete a Thought
 router
-  .route('/:thoughtId')
+  .route("/:thoughtId")
   .get(getSingleThought)
   .put(updateThought)
   .delete(deleteThought);
 
 // /api/thoughts/:thoughtId/reactions
-router.route('/:thoughtId/reactions').post(addReaction);
+// Add a Reaction to a Thought
+router.route("/:thoughtId/reactions").post(addReaction);
 
 // /api/thoughts/:thoughtId/reactions/:reactionId
-router.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);
+// Remove a Reaction from a Thought
+router.route("/:thoughtId/reactions/:reactionId").delete(removeReaction);
 
 module.exports = router;
 
+/* example data - thought
+ {
+  "thoughtText": "Here's a cool thought...",
+  "username": "lernantino",
+  "userId": "5edff358a0fcb779aa7b118b"
+ } */
 
-// POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
-
-// // example data
-// {
-//   "thoughtText": "Here's a cool thought...",
-//   "username": "lernantino",
-//   "userId": "5edff358a0fcb779aa7b118b"
-// }
+/* example data - reaction
+ { 
+  "reactionBody": "Wow! That's amazing! How does it work?", 
+  "username": "lernantino", 
+  "userId": "5edff358a0fcb779aa7b118b" 
+ } */

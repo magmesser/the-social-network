@@ -1,3 +1,5 @@
+// Thoughts & Reactions controller
+
 const { Thought, User, Reaction } = require("../models");
 
 module.exports = {
@@ -24,11 +26,12 @@ module.exports = {
   // Create a new Thought
   createThought(req, res) {
     Thought.create(req.body)
-      .then((thought) => 
-      User.findOneAndUpdate(
+      .then((thought) =>
+        User.findOneAndUpdate(
           { _id: req.body.userId },
           { $addToSet: { thoughts: thought._id } },
-          { new: true })
+          { new: true }
+        )
       )
       .then((user) =>
         !user

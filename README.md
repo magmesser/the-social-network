@@ -1,38 +1,70 @@
-# the-social-network
-Challenge 18 NoSQL Challenge: Social Network API
+  # The Social Network
+  
+  ## Badges
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- video
-- readme
-- insomnia
+  ## Description
+  🔮 Challenge 18 NoSQL Challenge: Social Network API
+  
+  Your challenge is to build an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. You’ll use Express.js for routing, a MongoDB database, and the Mongoose ODM. In addition to using the Express.js Links to an external site.and Mongoose Links to an external site.packages, you may also optionally use a JavaScript date library of your choice or the native JavaScript Date object to format timestamps. 
 
-packages: 
-- express.js
-- mongoose
-- js date library - npm install dayjs
-<!-- const dayjs = require('dayjs')
-dayjs().format() -->
+  Link to the video demo: [Video Link](https://watch.screencastify.com/v/ZldWEPiYjhGjQC0m7LBV)
 
-Criteria: 
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
+  ## 📚 Table of Contents
+  * [🔧 Installation](#installation)
+  * [🎢 Usage](#usage)
+  * [📝 Tests](#tests)
+  * [🚧 Contribution](#contribution)
+  * [🔑 License](#license)
+  * [❓ Questions](#questions)
+  
+  ## Installation
+  🔧 npm i packages: 
+  * express.js
+  * mongoose
+  * day.js (js date library)
 
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
+  ## Usage 
+  🎢 npm i && npm start to begin application. Technologies used: MongoDB, mongoose, express, nodemon, insomnia, day.js, Javascript.
 
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
+  ## Tests
+  📝 Test the following routes in Insomnia:
 
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+  ### **Users & Friends**
+  * Get all Users: `GET /api/users`
+  * Create a new User: `POST /api/users`
+    * Example Data: `{ "username": "lernantino", "email": "lernantino@gmail.com }`
+  * Get a single User: `GET /api/users/:userId`
+  * Update a User: `PUT /api/users/:userId`
+    * Example Data: `{ "username": "mmesser", "email": "mmesser@gmail.com }`
+  * Delete a User: `DELETE /api/users/:userId`
+  * Add a Friend to a User: `PUT /api/users/:userId/friends/:friendId`
+  * Remove a Friend from a User: `DELETE /api/users/:userId/friends/:friendId`
 
-INSOMNIA/Video: 
-- Start app server 
-- GET routes to return all users and all thoughts being tested in Insomnia:
-- GET routes to return a single user and a single thought being tested in Insomnia:
-- POST, PUT, and DELETE routes for users being tested in Insomnia:
-- POST and DELETE routes for a user’s friend list being tested in Insomnia:
-- POST and DELETE routes for reactions to thoughts being tested in Insomnia
+  ### **Thoughts & Reactions**
+  * Get all Thoughts: `GET /api/thoughts`
+  * Create a new Thought: `POST /api/thoughts`
+    * Example Data: `{ "thoughtText": "Here's a cool thought...", "username": "lernantino", "userId": "5edff358a0fcb779aa7b118b" }`
+  * Get a single Thought: `GET /api/thoughts/:thoughtId`
+  * Update a Thought: `PUT /api/thoughts/:thoughtId`
+    * Example Data: `{ "thoughtText": "On second thought...", "username": "lernantino", "userId": "5edff358a0fcb779aa7b118b" } `
+  * Delete a Thought: `DELETE /api/thoughts/:thoughtId`
+  * Add a Reaction to a Thought: `PUT /api/thoughts/:thoughtId/reactions`
+    * Example Data: `{ "reactionBody": "Wow! That's amazing! How does it work?", "username": "lernantino", "userId": "5edff358a0fcb779aa7b118b" }`
+  * Remove a Reaction from a Thought: `DELETE /api/thoughts/:thoughtId/reactions`
 
-SUBMIT: 
-- A walkthrough video demonstrating the functionality of the application and all of the acceptance criteria being met.
-- The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+  ## Contribution 
+  🚧 [Contributor Covenant](https://www.contributor-covenant.org/) <br> Assistance sought from [StackOverflow](https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax) on User Model's email matching validation.
+  
+
+  ## License
+  🔑 This application is covered under the MIT license.  <br> 
+      Find out more here: https://choosealicense.com/licenses/mit/ <br>
+      [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+  ## Questions
+  ❓ Have questions? Please contact Maggie Messer at: <br>
+  * magmesser's GitHub: https://github.com/magmesser <br> 
+  * Maggie Messer's Email: magmesser@gmail.com <br>
+  
+  ❗ Repository Link: https://github.com/magmesser/the-social-network

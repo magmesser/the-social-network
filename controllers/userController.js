@@ -1,3 +1,5 @@
+// Users & Friends controller
+
 const { ObjectId } = require("mongoose").Types;
 const { User, Thought } = require("../models");
 
@@ -48,27 +50,29 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Delete a User 
+  // Delete a User
   deleteUser(req, res) {
     User.findOneAndRemove({ _id: req.params.userId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No such user exists" })
           : User.updateMany(
-              { _id: {$in: user.friends} },
+              { _id: { $in: user.friends } },
               { $pull: { friends: req.params.userId } },
               { new: true }
             )
       )
       .then((user) =>
-        Thought.deleteMany({ username : user.username })
-        .then(() => {
-            res.json({ message: "User successfully deleted" })
-        })
-        .catch(err => res.status(404).json({
-            message: "User deleted, but no thoughts found",
-          }))
-        )
+        Thought.deleteMany({ username: user.username })
+          .then(() => {
+            res.json({ message: "User successfully deleted" });
+          })
+          .catch((err) =>
+            res.status(404).json({
+              message: "User deleted, but no thoughts found",
+            })
+          )
+      )
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
